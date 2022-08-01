@@ -39,8 +39,8 @@ public class LoginTests extends BaseTest {
             .goToNopcommerce()
             .goToLoginPage()
             .loginToNopcomerce("", "");
-            Thread.sleep(3000);
-			Assert.assertEquals(driver.getTitle(), "nopCommerce demo store12345");
+        Thread.sleep(3000);
+	    Assert.assertEquals(driver.getTitle(), "nopCommerce demo store. Login");
     }
     
 }
