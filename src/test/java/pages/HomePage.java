@@ -27,14 +27,13 @@ public class HomePage extends BasePage {
      */
     //Go to Homepage
     public HomePage goToNopcommerce() {
-        Log.info("Opening Nopcomerce Website.");
         driver.get(baseURL);
         return this;
     }
 
     //Go to LoginPage
     public LoginPage goToLoginPage() {
-        Log.info("Click to login link");
+        Log.info("ĐÂY LÀ LOG ");
         click(signInButtonClass);
         return new LoginPage(driver);
     }

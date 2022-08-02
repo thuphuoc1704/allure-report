@@ -40,7 +40,8 @@ public class LoginTests extends BaseTest {
             .goToLoginPage()
             .loginToNopcomerce("", "");
         Thread.sleep(3000);
-	    Assert.assertEquals(driver.getTitle(), "nopCommerce demo store. Login");
+        logMessage("Verify title của trang web");
+	    Assert.assertEquals(driver.getTitle(), "Vo Thi Thu Phuoc");
     }
     
 }

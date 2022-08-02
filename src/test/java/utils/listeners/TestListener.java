@@ -4,6 +4,8 @@ import static utils.extentreports.ExtentManager.getExtentReports;
 import static utils.extentreports.ExtentTestManager.getTest;
 
 import com.aventstack.extentreports.Status;
+
+import io.qameta.allure.Allure;
 import io.qameta.allure.Attachment;
 import java.util.Objects;
 import org.openqa.selenium.OutputType;
@@ -33,10 +35,12 @@ public class TestListener extends BaseTest implements ITestListener {
     }
 
     //HTML attachments for Allure
-    @Attachment(value = "{0}", type = "text/html")
+    @Attachment(value = "FILE LOG", type = "text/html")
     public static String attachHtml(String html) {
         return html;
     }
+   
+     
 
     @Override
     public void onStart(ITestContext iTestContext) {
@@ -48,6 +52,7 @@ public class TestListener extends BaseTest implements ITestListener {
     public void onFinish(ITestContext iTestContext) {
         Log.info("I am in onFinish method " + iTestContext.getName());
         //Do tier down operations for ExtentReports reporting!
+       
         getExtentReports().flush();
     }
 
@@ -78,7 +83,8 @@ public class TestListener extends BaseTest implements ITestListener {
         }
 
         //Save a log on allure.
-        saveTextLog(getTestMethodName(iTestResult) + " failed and screenshot taken!");
+//        saveTextLog(getTestMethodName(iTestResult) + " failed and screenshot taken!");
+        saveTextLog(attachHtml("file:///"+System.getProperty("user.dir") +"/log4j2/log4j2-test-automation.log"));
 
         //Take base64Screenshot screenshot for extent reports
         String base64Screenshot =
@@ -86,7 +92,8 @@ public class TestListener extends BaseTest implements ITestListener {
 
         //ExtentReports log and screenshot operations for failed tests.
         getTest().log(Status.FAIL, "Test Failed",
-            getTest().addScreenCaptureFromBase64String(base64Screenshot).getModel().getMedia().get(0));
+        getTest().addScreenCaptureFromBase64String(base64Screenshot).getModel().getMedia().get(0));
+        
     }
 
     @Override
