@@ -4,26 +4,25 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.Reporter;
 
-import com.aventstack.extentreports.model.Report;
-
+import io.qameta.allure.Allure;
 import io.qameta.allure.Step;
 import utils.logs.Log;
 
 public class LoginPage extends BasePage {
-    /**Constructor*/
     public LoginPage(WebDriver driver) {
         super(driver);
     }
 
-    /**Web Elements*/
     By userNameId = By.xpath("//input[@id='Email']");
     By passwordId = By.xpath("//input[@id='Password']");
     By loginButtonId = By.xpath("//button[text()='Log in']");
 
    
     public  LoginPage loginToNopcomerce(String username, String password) {
+    	Allure.step("Nhập username:"+ username +", password: "+password);
         writeText(userNameId, username);
         writeText(passwordId, password);
+        Allure.step("Click to login button");
         click(loginButtonId);
         return this;
     }

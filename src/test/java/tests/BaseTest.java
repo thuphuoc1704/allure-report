@@ -19,9 +19,8 @@ import pages.HomePage;
 import utils.logs.Log;
 
 public class BaseTest {
-    public WebDriver driver;
+	public WebDriver driver;
     public HomePage  homePage;
-
     public WebDriver getDriver() {
         return driver;
     }
@@ -31,7 +30,6 @@ public class BaseTest {
         Log.info("Tests are starting!");
     	WebDriverManager.chromedriver().setup();
 		driver = new ChromeDriver();
-//		driver.manage().timeouts().pageLoadTimeout(15, TimeUnit.SECONDS);
 		driver.manage().window().maximize();
     }
 
@@ -43,7 +41,6 @@ public class BaseTest {
     @AfterClass
     public void teardown() {
         Log.info("Tests are ending!");
-        
         driver.quit();
     }
     @BeforeSuite
@@ -52,10 +49,6 @@ public class BaseTest {
 		deleteAllFileInFolder();
 		System.out.println("---------- END delete file in folder ----------");
 	}
-    @Step("{0}")
-    public String logMessage(String log) {
-    	return log;
-    }
 
 	public void deleteAllFileInFolder() {
 		try {
