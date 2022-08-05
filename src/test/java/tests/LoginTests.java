@@ -41,7 +41,7 @@ public class LoginTests extends BaseTest {
 		homePage.goToNopcommerce().goToLoginPage().loginToNopcomerce("", "");
 		Thread.sleep(3000);
 		Allure.step("Verify title của trang web", Status.FAILED);
-		Assert.assertEquals(driver.getTitle(), "nopCommerce demo store. Login");
+		Assert.assertEquals(driver.getTitle(), "nopCommerce demo store. Loginddee");
 	}
 
 }
